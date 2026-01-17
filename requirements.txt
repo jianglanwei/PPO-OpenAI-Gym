@@ -1,0 +1,7 @@
+gymnasium[box2d,mujoco]
+torch
+numpy
+wandb
+pyyaml
+imageio
+setuptools

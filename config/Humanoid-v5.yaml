@@ -1,0 +1,29 @@
+# Configuration for Humanoid-v5:
+
+# Rollout Collection
+num_workers: 32                     # number of parallel environments
+rollout_steps_per_epoch: 131072     # total steps per epoch, 131072 = 4096 * 32
+
+# Network Settings
+actor_critic: PPOActorCriticLarge   # specify the actor critic class from module.py
+lr: 0.00001                         # learning rate for Adam optimizer
+max_grad_norm: 0.5                  # maximum norm for gradient clipping
+
+# PPO Loss Settings
+gamma: 0.99                         # discount factor for rewards
+gae_lambda: 0.97                    # lambda for Generalized Advantage Estimation
+clip_eps: 0.1                       # PPO clipping epsilon
+value_loss_coef: 0.25               # coefficient for value loss in total loss
+entropy_coef: 0.002
+
+# Training Schedule
+training_epochs: 2000               # total number of training epochs
+grad_steps_per_update: 500          # gradient steps per PPO update
+
+# Checkpointing
+ckpt_save_interval: 5               # save checkpoint every N epochs
+num_ckpts: 5                        # only the top # checkpoints will be retained
+ckpt_root_dir: "policy_ckpt"        # directory to store model checkpoints
+
+# Policy Rollout (For test.py)
+gif_root_dir: "gif"                 # directory to store policy rollout
